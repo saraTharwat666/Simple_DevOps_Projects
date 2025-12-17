@@ -1,0 +1,22 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    paths:
+      - "index.html"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout the repo
+      - uses: actions/checkout@v4
+
+      # 2️⃣ Upload the files as artifact
+      - uses: actions/upload-pages-artifact@v2
+        with:
+          path: .
+
+      # 3️⃣ Deploy to GitHub Pages
+      - uses: actions/deploy-pages@v2
